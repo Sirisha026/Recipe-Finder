@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipes Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Recipe Finder Logo">
+                RecipeFinder
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#recipes">Popular Recipes</a></li>
+            <li><a href="#make-dish">Make a Dish</a></li>
+            <li><a href="#upload-recipe">Upload Recipe</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+            <button id="account-btn" class="account-btn">👤</button>
+        </div>
+        
+        <!-- Account Sidebar -->
+        <div id="account-sidebar" class="account-sidebar">
+            <div class="sidebar-header">
+                <h3>My Account</h3>
+                <button class="close-sidebar">&times;</button>
+            </div>
+            <div class="user-profile-section">
+                <div class="avatar-upload">
+                    <div class="avatar-preview">
+                        <img id="avatar-preview" src="default-avatar.png" alt="User Avatar">
+                    </div>
+                    <input type="file" id="avatar-upload" accept="image/*">
+                    <label for="avatar-upload">Change Avatar</label>
+                </div>
+                
+                <div class="user-details-editable">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username-input" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email-input" value="john@example.com">
+                    </div>
+                    <button class="save-profile-btn">Save Profile</button>
+                </div>
+            </div>
+            
+            <!-- My Content Section -->
+            <div class="my-content-section">
+                <div class="content-tabs">
+                    <button class="tab-btn active" data-tab="my-recipes">My Recipes</button>
+                    <button class="tab-btn" data-tab="my-blogs">My Blogs</button>
+                </div>
+                
+                <div class="tab-content active" id="my-recipes">
+                    <div class="uploaded-recipes-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="my-blogs">
+                    <div class="blog-posts-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Section -->
+            <div class="sidebar-section">
+                <h4>Community Recipes</h4>
+                <div class="community-recipes">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <h4>Community Blog Posts</h4>
+                <div class="community-blogs">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Social Section -->
+            <div class="social-section">
+                <h4>Connect With Me</h4>
+                <div class="social-links">
+                    <input type="text" id="twitter-input" placeholder="Twitter URL">
+                    <input type="text" id="instagram-input" placeholder="Instagram URL">
+                    <button class="save-socials-btn">Save Social Links</button>
+                </div>
+            </div>
+            
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+        <div id="overlay" class="overlay"></div>
+    </nav>
+
+    <section id="home">
+        <h1>Discover Delicious Recipes</h1>
+        <div class="slideshow">
+            <div class="slide active">
+                <img src="images/healthybowl1.jpeg" alt="Healthy bowl">
+                <div class="slide-text">
+                    <h2>Healthy Bowls</h2>
+                    <p>Discover nutritious and delicious bowl recipes that are as good for your body as they are for your taste buds.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/salad1.jpeg" alt="Fresh salad">
+                <div class="slide-text">
+                    <h2>Summer Salads</h2>
+                    <p>Fresh greens with seasonal vegetables and zesty dressings perfect for warm weather.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/smoothie1.jpeg" alt="Delicious drinks">
+                <div class="slide-text">
+                    <h2>Healthy Smoothies</h2>
+                    <p>Juicy, flavorful healthy drinks with creative toppings that will satisfy any craving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recipes">
+        <h1>Popular Recipes</h1>
+        <div class="recipes-container">
+            <div class="recipes-train">
+                <div class="recipe-card">
+                    <div class="card-front">
+                        <img src="images/garlic bread.jpg" alt="Garlic Bread">
+                        <div class="card-title">Garlic Bread</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Garlic Bread</h3>
+                        <p><strong>Ingredients:</strong> 1 French baguette, 1/2 cup butter, 3 garlic cloves (minced), 2 tbsp parsley (chopped), 1/4 tsp salt</p>
+                        <p><strong>Instructions:</strong> Preheat oven to 375°F. Mix softened butter with minced garlic, parsley and salt. Slice baguette and spread butter mixture on each slice. Wrap in foil and bake for 15 minutes. For crispier bread, open foil and broil for 2-3 minutes.</p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="card-front">
+                        <img src="images/biryani.jpg" alt="Chicken Biryani">
+                        <div class="card-title">Chicken Biryani</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Chicken Biryani</h3>
+                        <p><strong>Ingredients:</strong> 2 cups basmati rice, 1 lb chicken, 1 cup yogurt, 2 onions, 2 tomatoes, biryani spices</p>
+                        <p><strong>Instructions:</strong> Marinate chicken in yogurt and spices. Layer with partially cooked rice. Cook on low heat for 30 minutes. Serve with raita.</p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="card-front">
+                        <img src="images/vadapav.jpg" alt="Pav Bhaji">
+                        <div class="card-title">Pav Bhaji</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Pav Bhaji</h3>
+                        <p><strong>Ingredients:</strong> Mixed vegetables, pav bhaji masala, butter, bread rolls</p>
+                        <p><strong>Instructions:</strong> Cook and mash vegetables with spices. Toast bread rolls with butter. Serve hot with chopped onions and lemon.</p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="card-front">
+                        <img src="images/cake.jpg" alt="Chocolate Cake">
+                        <div class="card-title">Chocolate Cake</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Chocolate Cake</h3>
+                        <p><strong>Ingredients:</strong> 2 cups flour, 1 3/4 cups sugar, 3/4 cup cocoa powder, 1 1/2 tsp baking powder, 1 1/2 tsp baking soda, 1 tsp salt, 2 eggs, 1 cup milk, 1/2 cup vegetable oil, 2 tsp vanilla extract, 1 cup boiling water</p>
+                        <p><strong>Instructions:</strong> Preheat oven to 350°F. Mix dry ingredients. Add eggs, milk, oil and vanilla. Beat for 2 minutes. Stir in boiling water. Bake for 30-35 minutes.</p>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <div class="card-front">
+                        <img src="images/cholle bhature.jpg" alt="Cholle Bhature">
+                        <div class="card-title">Cholle Bhature</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>Cholle Bhature</h3>
+                        <p><strong>Ingredients:</strong> 2 cups chickpeas, 3 onions, 3 tomatoes, ginger-garlic paste, chole masala, 2 cups flour, 1/2 cup yogurt, 1 tsp baking powder</p>
+                        <p><strong>Instructions:</strong> Soak chickpeas overnight. Pressure cook with salt. Prepare masala with onions, tomatoes and spices. For bhature, mix flour, yogurt, baking powder and water to make dough. Roll and deep fry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="make-dish">
+        <h1>Make a Dish</h1>
+        <div class="form-container">
+            <form id="dish-form">
+                <input type="text" id="ingredients" placeholder="Enter ingredients (comma separated)" required>
+                <button type="submit">Find Recipes</button>
+            </form>
+        </div>
+        <div class="recipes-container">
+            <div id="dish-results" class="recipes-train"></div>
+        </div>
+    </section>
+
+    <section id="upload-recipe">
+        <h1>Upload Your Recipe</h1>
+        <div class="form-container">
+            <form id="upload-form">
+                <input type="text" id="recipe-name" placeholder="Recipe Name" required>
+                <textarea id="recipe-description" placeholder="Recipe instructions..." required></textarea>
+                <div class="ingredients-container">
+                    <input type="text" id="ingredient-input" placeholder="Add ingredients (comma separated)">
+                    <button type="button" id="add-ingredient">Add Ingredients</button>
+                </div>
+                <div id="ingredients-list"></div>
+                <div class="file-input-container">
+                    <input type="file" id="recipe-image" accept="image/*" required>
+                    <label for="recipe-image" class="file-input-label">Choose Recipe Image</label>
+                </div>
+                <button type="submit">Submit Recipe</button>
+            </form>
+        </div>
+        <div class="recipes-container">
+            <div id="uploaded-recipe" class="recipes-train"></div>
+        </div>
+    </section>
+
+    <section id="blogs">
+        <h1>Food Blogs</h1>
+        <div class="form-container">
+            <form id="blog-form">
+                <input type="text" id="blog-title" placeholder="Blog Title" required>
+                <textarea id="blog-content" placeholder="Write your blog post here..." required></textarea>
+                
+                <div class="file-input-container">
+                    <input type="file" id="blog-image" accept="image/*" required>
+                    <label for="blog-image" class="file-input-label">Upload Blog Cover Image</label>
+                </div>
+                
+                <div class="file-input-container">
+                    <input type="file" id="blog-content-image" accept="image/*">
+                    <label for="blog-content-image" class="file-input-label">Add Image to Blog Content (Optional)</label>
+                </div>
+                
+                <button type="submit">Publish Blog</button>
+            </form>
+        </div>
+        <div class="blogs-container">
+            <div class="user-blogs">
+                <h4>Your Blog Posts</h4>
+                <div class="blog-posts-list"></div>
+            </div>
+            <div id="blog-posts" class="blog-posts-grid"></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

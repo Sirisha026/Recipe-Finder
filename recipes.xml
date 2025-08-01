@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipes>
+    <recipe>
+        <name>Garlic Bread</name>
+        <image>images/garlic bread.jpg</image>
+        <ingredients>
+            <ingredient>1 French baguette</ingredient>
+            <ingredient>1/2 cup butter</ingredient>
+            <ingredient>3 garlic cloves (minced)</ingredient>
+            <ingredient>2 tbsp parsley (chopped)</ingredient>
+            <ingredient>1/4 tsp salt</ingredient>
+        </ingredients>
+        <instructions>
+            Preheat oven to 375°F. Mix softened butter with minced garlic, parsley and salt. Slice baguette and spread butter mixture on each slice. Wrap in foil and bake for 15 minutes. For crispier bread, open foil and broil for 2-3 minutes.
+        </instructions>
+    </recipe>
+    <recipe>
+        <name>Chicken Biryani</name>
+        <image>images/biryani.jpg</image>
+        <ingredients>
+            <ingredient>2 cups basmati rice</ingredient>
+            <ingredient>1 lb chicken</ingredient>
+            <ingredient>1 cup yogurt</ingredient>
+            <ingredient>2 onions</ingredient>
+            <ingredient>2 tomatoes</ingredient>
+            <ingredient>biryani spices</ingredient>
+        </ingredients>
+        <instructions>
+            Marinate chicken in yogurt and spices. Layer with partially cooked rice. Cook on low heat for 30 minutes. Serve with raita.
+        </instructions>
+    </recipe>
+    <recipe>
+        <name>Pav Bhaji</name>
+        <image>images/vadapav.jpg</image>
+        <ingredients>
+            <ingredient>Mixed vegetables</ingredient>
+            <ingredient>pav bhaji masala</ingredient>
+            <ingredient>butter</ingredient>
+            <ingredient>bread rolls</ingredient>
+        </ingredients>
+        <instructions>
+            Cook and mash vegetables with spices. Toast bread rolls with butter. Serve hot with chopped onions and lemon.
+        </instructions>
+    </recipe>
+    <recipe>
+        <name>Chocolate Cake</name>
+        <image>images/cake.jpg</image>
+        <ingredients>
+            <ingredient>2 cups flour</ingredient>
+            <ingredient>1 3/4 cups sugar</ingredient>
+            <ingredient>3/4 cup cocoa powder</ingredient>
+            <ingredient>1 1/2 tsp baking powder</ingredient>
+            <ingredient>1 1/2 tsp baking soda</ingredient>
+            <ingredient>1 tsp salt</ingredient>
+            <ingredient>2 eggs</ingredient>
+            <ingredient>1 cup milk</ingredient>
+            <ingredient>1/2 cup vegetable oil</ingredient>
+            <ingredient>2 tsp vanilla extract</ingredient>
+            <ingredient>1 cup boiling water</ingredient>
+        </ingredients>
+        <instructions>
+            Preheat oven to 350°F. Mix dry ingredients. Add eggs, milk, oil and vanilla. Beat for 2 minutes. Stir in boiling water. Bake for 30-35 minutes.
+        </instructions>
+    </recipe>
+    <recipe>
+        <name>Cholle Bhature</name>
+        <image>images/cholle bhature.jpg</image>
+        <ingredients>
+            <ingredient>2 cups chickpeas</ingredient>
+            <ingredient>3 onions</ingredient>
+            <ingredient>3 tomatoes</ingredient>
+            <ingredient>ginger-garlic paste</ingredient>
+            <ingredient>chole masala</ingredient>
+            <ingredient>2 cups flour</ingredient>
+            <ingredient>1/2 cup yogurt</ingredient>
+            <ingredient>1 tsp baking powder</ingredient>
+        </ingredients>
+        <instructions>
+            Soak chickpeas overnight. Pressure cook with salt. Prepare masala with onions, tomatoes and spices. For bhature, mix flour, yogurt, baking powder and water to make dough. Roll and deep fry.
+        </instructions>
+    </recipe>
+</recipes>

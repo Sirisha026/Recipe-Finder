@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder | Sign In</title>
+    <style>
+        :root {
+            --primary-color: #FF7E5F;
+            --secondary-color: #3AAFA9;
+            --accent-color: #FE5F55;
+            --background-color: #ffffff;
+            --text-color: #2B2D42;
+            --container-bg: #FFFFFF;
+            --shadow-color: rgba(0,0,0,0.1);
+            --section-divider: rgba(0,0,0,0.1);
+            --error-color: #ff4444;
+            --success-color: #4CAF50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: url('images/food2.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 43, 43, 0.85);
+            z-index: 0;
+        }
+        
+        .cont {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 650px;
+            background: var(--container-bg);
+            box-shadow: 0 15px 30px var(--shadow-color);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            z-index: 1;
+        }
+
+        /* Decorative Pin */
+        .pin {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 130px;
+            background: url('images/logo.png') no-repeat center center;
+            background-size: contain;
+            z-index: 10;
+           /* filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));*/
+        }
+        
+        .form-container {
+            width: 65%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form {
+            width: 100%;
+            padding: 60px 80px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .form h2 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        .sign-in {
+            transform: translateX(0);
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .sign-up {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .cont.s--signup .sign-in {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        
+        .cont.s--signup .sign-up {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+        
+        label span {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(58, 175, 169, 0.2);
+            background: white;
+        }
+        
+        input.error {
+            border-color: var(--error-color);
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            color: var(--success-color);
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .forgot-pass {
+            font-size: 14px;
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-pass:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        
+        .submit {
+            margin-top: 15px;
+            padding: 16px 24px;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+        
+        .submit:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .slider {
+            width: 35%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            z-index: 3;
+        }
+        
+        .slider h3 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        
+        .slider p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .slider__btn {
+            cursor: pointer;
+            padding: 14px 35px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .slider__btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .modal-title {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            font-size: 24px;
+        }
+        
+        .modal-message {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .modal-step {
+            display: none;
+        }
+        
+        .modal-step.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                background: url('images/food2.jpeg') no-repeat center center fixed;
+                background-size: cover;
+            }
+            
+            .cont {
+                height: auto;
+                flex-direction: column;
+                max-width: 450px;
+            }
+            
+            .form-container {
+                width: 100%;
+                order: 2;
+            }
+            
+            .form {
+                padding: 40px 30px;
+            }
+            
+            .slider {
+                width: 100%;
+                position: relative;
+                order: 1;
+                padding: 30px 20px;
+            }
+
+            .pin {
+                width: 30px;
+                height: 30px;
+                top: 10px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <!-- Decorative Pin -->
+        <div class="pin"></div>
+        
+        <div class="form-container">
+            <div class="form sign-in">
+                <h2>Welcome Back</h2>
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="login-email" required />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" id="login-password" required />
+                </label>
+                <p class="forgot-pass" id="forgot-pass-link">Forgot password?</p>
+                <div class="error-message" id="login-error">Invalid email or password</div>
+                <button type="button" class="submit" id="login-btn">SIGN IN</button>
+            </div>
+            
+            <div class="form sign-up">
+                <h2>Create Account</h2>
+                <label>
+                    <span>Name</span>
+                    <input type="text" id="signup-name" required />
+                    <div class="error-message" id="name-error">Name should only contain alphabets</div>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="signup-email" required />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" id="signup-password" required />
+                </label>
+                <label>
+                    <span>Confirm Password</span>
+                    <input type="password" id="signup-confirm-password" required />
+                    <div class="error-message" id="password-error">Passwords do not match</div>
+                </label>
+                <div class="success-message" id="signup-success">Account created successfully!</div>
+                <button type="button" class="submit" id="signup-btn">SIGN UP</button>
+            </div>
+        </div>
+        
+        <div class="slider">
+            <h3>New to Recipe Finder?</h3>
+            <p>Join our community to save your favorite recipes, create your own dishes, and share your culinary creations!</p>
+            <button class="slider__btn" id="slider-btn">SIGN UP</button>
+        </div>
+    </div>
+    
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgot-password-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            
+            <!-- Step 1: Enter Email -->
+            <div class="modal-step active" id="step-1">
+                <h3 class="modal-title">Reset Your Password</h3>
+                <p class="modal-message">Enter your email address and we'll send you a code to reset your password.</p>
+                
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="reset-email" required />
+                    <div class="error-message" id="reset-email-error"></div>
+                </label>
+                
+                <button type="button" class="submit" id="send-code-btn">SEND CODE</button>
+            </div>
+            
+            <!-- Step 2: Enter Code -->
+            <div class="modal-step" id="step-2">
+                <h3 class="modal-title">Enter Verification Code</h3>
+                <p class="modal-message">We've sent a 6-digit code to <span id="user-email-display"></span>. Please enter it below.</p>
+                
+                <label>
+                    <span>Verification Code</span>
+                    <input type="text" id="verification-code" maxlength="6" required />
+                    <div class="error-message" id="code-error"></div>
+                </label>
+                
+                <button type="button" class="submit" id="verify-code-btn">VERIFY CODE</button>
+            </div>
+            
+            <!-- Step 3: New Password -->
+            <div class="modal-step" id="step-3">
+                <h3 class="modal-title">Create New Password</h3>
+                <p class="modal-message">Please enter your new password.</p>
+                
+                <label>
+                    <span>New Password</span>
+                    <input type="password" id="new-password" required />
+                </label>
+                
+                <label>
+                    <span>Confirm New Password</span>
+                    <input type="password" id="confirm-new-password" required />
+                    <div class="error-message" id="new-password-error"></div>
+                </label>
+                
+                <button type="button" class="submit" id="reset-password-btn">RESET PASSWORD</button>
+            </div>
+            
+            <!-- Success Message -->
+            <div class="modal-step" id="step-4">
+                <h3 class="modal-title">Password Reset Successful!</h3>
+                <p class="modal-message">Your password has been successfully updated. You can now sign in with your new password.</p>
+                
+                <button type="button" class="submit" id="close-success-btn">CLOSE</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Database simulation using localStorage
+        const USER_DB = 'recipeFinderUsers';
+        const RESET_CODES = 'resetCodes';
+        
+        // Initialize databases if they don't exist
+        if (!localStorage.getItem(USER_DB)) {
+            localStorage.setItem(USER_DB, JSON.stringify([]));
+        }
+        if (!localStorage.getItem(RESET_CODES)) {
+            localStorage.setItem(RESET_CODES, JSON.stringify({}));
+        }
+        
+        // DOM Elements
+        const sliderBtn = document.getElementById('slider-btn');
+        const container = document.querySelector('.cont');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const loginEmail = document.getElementById('login-email');
+        const loginPassword = document.getElementById('login-password');
+        const loginError = document.getElementById('login-error');
+        const signupName = document.getElementById('signup-name');
+        const nameError = document.getElementById('name-error');
+        const signupEmail = document.getElementById('signup-email');
+        const signupPassword = document.getElementById('signup-password');
+        const signupConfirmPassword = document.getElementById('signup-confirm-password');
+        const passwordError = document.getElementById('password-error');
+        const signupSuccess = document.getElementById('signup-success');
+        const forgotPassLink = document.getElementById('forgot-pass-link');
+        
+        // Modal Elements
+        const modal = document.getElementById('forgot-password-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const resetEmail = document.getElementById('reset-email');
+        const resetEmailError = document.getElementById('reset-email-error');
+        const sendCodeBtn = document.getElementById('send-code-btn');
+        const userEmailDisplay = document.getElementById('user-email-display');
+        const verificationCode = document.getElementById('verification-code');
+        const codeError = document.getElementById('code-error');
+        const verifyCodeBtn = document.getElementById('verify-code-btn');
+        const newPassword = document.getElementById('new-password');
+        const confirmNewPassword = document.getElementById('confirm-new-password');
+        const newPasswordError = document.getElementById('new-password-error');
+        const resetPasswordBtn = document.getElementById('reset-password-btn');
+        const closeSuccessBtn = document.getElementById('close-success-btn');
+        
+        // Steps
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        const step4 = document.getElementById('step-4');
+        
+        let isSignUp = false;
+        let currentResetEmail = '';
+        let generatedCode = '';
+        
+        // Toggle between sign-in and sign-up
+        sliderBtn.addEventListener('click', function() {
+            isSignUp = !isSignUp;
+            
+            if (isSignUp) {
+                container.classList.add('s--signup');
+                sliderBtn.textContent = 'SIGN IN';
+            } else {
+                container.classList.remove('s--signup');
+                sliderBtn.textContent = 'SIGN UP';
+            }
+        });
+
+        // Name validation - only alphabets and spaces
+        signupName.addEventListener('input', function() {
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(this.value)) {
+                this.classList.add('error');
+                nameError.style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                nameError.style.display = 'none';
+            }
+        });
+
+        // Password match validation
+        function validatePassword() {
+            if (signupPassword.value !== signupConfirmPassword.value) {
+                signupConfirmPassword.classList.add('error');
+                passwordError.style.display = 'block';
+                return false;
+            } else {
+                signupConfirmPassword.classList.remove('error');
+                passwordError.style.display = 'none';
+                return true;
+            }
+        }
+
+        signupPassword.addEventListener('input', validatePassword);
+        signupConfirmPassword.addEventListener('input', validatePassword);
+
+        // Sign up form submission
+        signupBtn.addEventListener('click', function() {
+            const name = signupName.value.trim();
+            const email = signupEmail.value.trim();
+            const password = signupPassword.value;
+            const confirmPassword = signupConfirmPassword.value;
+            
+            // Validate name
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                signupName.classList.add('error');
+                nameError.style.display = 'block';
+                return;
+            }
+            
+            // Validate email
+            if (!email) {
+                signupEmail.classList.add('error');
+                return;
+            }
+            
+            // Validate password match
+            if (!validatePassword()) {
+                return;
+            }
+            
+            if (name && email && password && confirmPassword) {
+                // Check if user already exists
+                const users = JSON.parse(localStorage.getItem(USER_DB));
+                const userExists = users.some(user => user.email === email);
+                
+                if (userExists) {
+                    alert('User with this email already exists!');
+                    return;
+                }
+                
+                // Add new user to "database"
+                users.push({
+                    name,
+                    email,
+                    password // Note: In a real app, you would hash the password
+                });
+                
+                localStorage.setItem(USER_DB, JSON.stringify(users));
+                
+                // Show success message
+                signupSuccess.style.display = 'block';
+                setTimeout(() => {
+                    signupSuccess.style.display = 'none';
+                    // Switch to login form
+                    container.classList.remove('s--signup');
+                    sliderBtn.textContent = 'SIGN UP';
+                    // Clear form
+                    signupName.value = '';
+                    signupEmail.value = '';
+                    signupPassword.value = '';
+                    signupConfirmPassword.value = '';
+                }, 2000);
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+    
+        // Sign in form submission
+        loginBtn.addEventListener('click', function() {
+            const email = loginEmail.value.trim();
+            const password = loginPassword.value;
+            
+            if (email && password) {
+                // Check credentials against "database"
+                const users = JSON.parse(localStorage.getItem(USER_DB));
+                const user = users.find(user => user.email === email && user.password === password);
+                
+                if (user) {
+                    // Store current user session
+                    sessionStorage.setItem('currentUser', JSON.stringify(user));
+                    // Redirect to home page
+                    window.location.href = "index.html";
+                } else {
+                    loginError.style.display = 'block';
+                    setTimeout(() => {
+                        loginError.style.display = 'none';
+                    }, 3000);
+                }
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+        
+        // Forgot Password Flow
+        
+        // Open modal when "Forgot password" is clicked
+        forgotPassLink.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            resetEmail.focus();
+        });
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            // Reset modal to step 1
+            step1.classList.add('active');
+            step2.classList.remove('active');
+            step3.classList.remove('active');
+            step4.classList.remove('active');
+            // Clear fields
+            resetEmail.value = '';
+            verificationCode.value = '';
+            newPassword.value = '';
+            confirmNewPassword.value = '';
+            // Clear errors
+            resetEmailError.textContent = '';
+            codeError.textContent = '';
+            newPasswordError.textContent = '';
+        }
+        
+        // Step 1: Send verification code
+        sendCodeBtn.addEventListener('click', function() {
+            const email = resetEmail.value.trim();
+            resetEmailError.textContent = '';
+            if (!email) {
+                resetEmailError.textContent = 'Please enter your email';
+                return;
+            }
+            
+            // Check if email exists in database
+            const users = JSON.parse(localStorage.getItem(USER_DB));
+            const userExists = users.some(user => user.email === email);
+            
+            if (!userExists) {
+                resetEmailError.textContent = 'No account found with this email';
+                return;
+            }
+            
+            // Generate a 6-digit code (in a real app, you would send this via email)
+            generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Store the code with expiration (10 minutes from now)
+            const resetCodes = JSON.parse(localStorage.getItem(RESET_CODES));
+            resetCodes[email] = {
+                code: generatedCode,
+                expires: Date.now() + 600000 // 10 minutes
+            };
+            localStorage.setItem(RESET_CODES, JSON.stringify(resetCodes));
+            
+            currentResetEmail = email;
+            
+            // For demo purposes, show the code in console (remove in production)
+            // For demo purposes, we'll alert the code since we can't actually send emails
+            alert(`Password reset code for ${email}: ${generatedCode}\n\n(In a real app, this would be sent via email)`);          
+            // Move to step 2
+            step1.classList.remove('active');
+            step2.classList.add('active');
+            userEmailDisplay.textContent = email;
+        });
+        
+        // Step 2: Verify code
+        verifyCodeBtn.addEventListener('click', function() {
+            const code = verificationCode.value.trim();
+            
+            if (!code || code.length !== 6) {
+                codeError.textContent = 'Please enter a valid 6-digit code';
+                return;
+            }
+            
+            // Check if code matches
+            const resetCodes = JSON.parse(localStorage.getItem(RESET_CODES));
+            const codeData = resetCodes[currentResetEmail];
+            
+            if (!codeData || codeData.code !== code) {
+                codeError.textContent = 'Invalid verification code';
+                return;
+            }
+            
+            // Check if code is expired
+            if (Date.now() > codeData.expires) {
+                codeError.textContent = 'Verification code has expired';
+                return;
+            }
+            
+            // Code is valid, move to step 3
+            step2.classList.remove('active');
+            step3.classList.add('active');
+        });
+        
+        // Step 3: Reset password
+        resetPasswordBtn.addEventListener('click', function() {
+            const password = newPassword.value;
+            const confirmPassword = confirmNewPassword.value;
+            newPasswordError.textContent = '';
+            if (!password || !confirmPassword) {
+                newPasswordError.textContent = 'Please fill in both fields';
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                newPasswordError.textContent = 'Passwords do not match';
+                return;
+            }
+            if (password.length < 6) {
+                newPasswordError.textContent = 'Password must be at least 6 characters';
+                return;
+            }
+            // Update password in database
+            const users = JSON.parse(localStorage.getItem(USER_DB));
+            const userIndex = users.findIndex(user => user.email === currentResetEmail);
+            
+            if (userIndex !== -1) {
+                users[userIndex].password = password; // In real app, hash the password
+                localStorage.setItem(USER_DB, JSON.stringify(users));
+                
+                // Remove the used code
+                const resetCodes = JSON.parse(localStorage.getItem(RESET_CODES));
+                delete resetCodes[currentResetEmail];
+                localStorage.setItem(RESET_CODES, JSON.stringify(resetCodes));
+                
+                // Move to success step
+                step3.classList.remove('active');
+                step4.classList.add('active');
+            }
+            else {
+                newPasswordError.textContent = 'User not found';
+            }
+        });
+        
+        // Close modal after success
+        closeSuccessBtn.addEventListener('click', closeModal);
+        
+        // Check if user is already logged in
+        function checkAuth() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (currentUser) {
+                window.location.href = "index.html";
+            }
+        }
+        
+        // Add animation class after page loads
+        window.addEventListener('load', function() {
+            document.querySelector('.cont').style.opacity = '1';
+            checkAuth();
+        });
+    </script>
+</body>
+</html>
